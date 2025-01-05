@@ -5,14 +5,14 @@
 #define MAX_P 20  // Maximum number of processes
 #define MAX_RES 20  // Maximum number of resources
 
-int m, n;  // m = resources, n = processes
+int m, n;
 int total[MAX_RES];
 int available[MAX_RES];
 int max[MAX_P][MAX_RES];
 int allocation[MAX_P][MAX_RES];
 int need[MAX_P][MAX_RES];
-int safe[100][MAX_P];  // Array to store all safe sequences
-int count = 0;  // Count of safe sequences
+int safe[100][MAX_P];
+int count = 0;
 
 void calculate_need_matrix() {
     for (int i = 0; i < n; i++) {
@@ -78,22 +78,19 @@ int main() {
         return 1;
     }
 
-    fscanf(file, "%d", &m);  // Number of resources
-    fscanf(file, "%d", &n);  // Number of processes
+    fscanf(file, "%d", &m);
+    fscanf(file, "%d", &n); 
 
-    // Read total instances of each resource
     for (int i = 0; i < m; i++) {
         fscanf(file, "%d", &total[i]);
     }
 
-    // Read maximum matrix
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             fscanf(file, "%d", &max[i][j]);
         }
     }
 
-    // Read allocation matrix
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             fscanf(file, "%d", &allocation[i][j]);
@@ -102,7 +99,6 @@ int main() {
 
     fclose(file);
 
-    // Calculate available resources
     for (int j = 0; j < m; j++) {
         int allocated = 0;
         for (int i = 0; i < n; i++) {
